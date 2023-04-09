@@ -1,0 +1,33 @@
+--%carp-begin
+create or replace force view PEV_T_LOV_PROJECT_STATE_API as
+select "ID", "STATE_NAME", "IS_DELETED", "CREATED_DATE", "CREATED_BY", "UPDATED_DATE", "UPDATED_BY"
+ from PEV_T_LOV_PROJECT_STATE
+/
+show errors
+
+
+COMMENT ON TABLE PEV_T_LOV_PROJECT_STATE_API IS 'Ciselnik pro stavy projektu'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.ID IS 'PK - ID Identifikátor'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.STATE_NAME IS 'Název postoja'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.IS_DELETED IS 'Příznak smazání záznamu (1 - smazán)'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.CREATED_DATE IS 'datum vytvoření'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.CREATED_BY IS 'Uživatel, který vytvoril záznam.'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.UPDATED_DATE IS 'datum ulozeni'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PROJECT_STATE_API.UPDATED_BY IS 'Uživatel, který uložil záznam.'
+/
+
+--%carp-end

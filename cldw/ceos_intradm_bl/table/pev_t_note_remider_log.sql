@@ -1,0 +1,108 @@
+
+  CREATE TABLE "PEV_T_NOTE_REMIDER_LOG"
+   (	"NOTE_ID" NUMBER,
+	"NOTE_ICON" VARCHAR2(25 CHAR),
+	"NOTE_ICON_COLOR" VARCHAR2(25 CHAR),
+	"NOTE_HEADER" VARCHAR2(255 CHAR),
+	"NOTE_TEXT" VARCHAR2(500 CHAR),
+	"NOTE_LINK" VARCHAR2(255 CHAR),
+	"NOTE_COLOR" VARCHAR2(25 CHAR),
+	"NOTE_ACCEPT" VARCHAR2(250 CHAR),
+	"CREATE_DATE" DATE DEFAULT SYSDATE NOT NULL ENABLE,
+	"NOTE_ACCEPT_WHO" VARCHAR2(25 CHAR),
+	"NOTE_ACCEPT_WHEN" DATE
+   )
+   
+     CREATE SEQUENCE  "CEOS_INTRADM_BL"."PEV_S_NOTE_REMIDER_LOG"  MINVALUE 1 MAXVALUE 999999999999999999999999999 INCREMENT BY 1 START WITH 15368 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+  
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ID" IS 'PK pro note remider log ze CPM_S_NOTE_REMIDER_LOG';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ICON" IS 'class for awesome icons for example "fa-exclamation-triangle"';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ICON_COLOR" IS 'colour for awesome icons for example "rgb(192,0,15)"';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_HEADER" IS 'header text of notification';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_TEXT" IS 'body html text for notification';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_LINK" IS 'URL for jump from notification';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_COLOR" IS 'colour for notofication entry "rgb(192,0,15)"';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ACCEPT" IS 'Link URL or javascript, that is executed when press accept link (if left or null not accept is shown)';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."CREATE_DATE" IS 'datum vyvoreni';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ACCEPT_WHO" IS 'zapise se jmeno toho, kdov reminderu oznacil zpravu jako prectenou, pokud je zde username potom, hide from reminder v prehledu v aplikaci';
+   COMMENT ON COLUMN "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"."NOTE_ACCEPT_WHEN" IS 'zapise se datum kdy nekdo v reminderu oznacil zpravu jako prectenou';
+   COMMENT ON TABLE "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG"  IS 'Tabulka notifikaci';
+
+
+  GRANT SELECT ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "CEOS_INTRADM" WITH GRANT OPTION;
+  GRANT INSERT ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "CEOS_INTRADM" WITH GRANT OPTION;
+  GRANT UPDATE ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "CEOS_INTRADM" WITH GRANT OPTION;
+  GRANT DELETE ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "CEOS_INTRADM" WITH GRANT OPTION;
+  GRANT READ ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "CEOS_INTRADM" WITH GRANT OPTION;
+  GRANT READ ON "CEOS_INTRADM_BL"."PEV_T_NOTE_REMIDER_LOG" TO "RL_CEOS_INTRADM_BL_RO";
+  
+  
+  create or replace synonym PEV_T_NOTE_REMIDER_LOG for CEOS_INTRADM_BL.PEV_T_NOTE_REMIDER_LOG
+  
+  
+  --%carp-begin
+create or replace force view PEV_T_NOTE_REMIDER_LOG_API as
+select "NOTE_ID","NOTE_ICON", "NOTE_ICON_COLOR", "NOTE_HEADER", "NOTE_TEXT",
+    "NOTE_LINK","NOTE_COLOR", "NOTE_ACCEPT", "CREATE_DATE", "NOTE_ACCEPT_WHO",
+    "NOTE_ACCEPT_WHEN"
+ from PEV_T_NOTE_REMIDER_LOG
+/
+show errors
+
+
+COMMENT ON TABLE PEV_T_NOTE_REMIDER_LOG_API IS 'Tabulka notifikaci'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ID IS 'PK pro note remider log ze CPM_S_NOTE_REMIDER_LOG'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ICON IS 'class for awesome icons for example "fa-exclamation-triangle"'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ICON_COLOR IS 'colour for awesome icons for example "rgb(192,0,15)"'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_HEADER IS 'header text of notification'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_TEXT IS 'body html text for notification'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_LINK IS 'URL for jump from notification'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_COLOR IS 'colour for notofication entry "rgb(192,0,15)"'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ACCEPT IS 'Link URL or javascript, that is executed when press accept link (if left or null not accept is shown)'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.CREATE_DATE IS 'datum vyvoreni'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ACCEPT_WHO IS 'zapise se jmeno toho, kdov reminderu oznacil zpravu jako prectenou, pokud je zde username potom, hide from reminder v prehledu v aplikaci'
+/
+
+COMMENT ON COLUMN PEV_T_NOTE_REMIDER_LOG_API.NOTE_ACCEPT_WHEN IS 'zapise se datum kdy nekdo v reminderu oznacil zpravu jako prectenou'
+/
+
+--%carp-end
+
+
+--%carp-begin
+grant select on PEV_T_NOTE_REMIDER_LOG_API to CEOS_INTRADM_APEX with grant option
+/
+
+grant insert on PEV_T_NOTE_REMIDER_LOG_API to CEOS_INTRADM_APEX with grant option
+/
+
+grant update on PEV_T_NOTE_REMIDER_LOG_API to CEOS_INTRADM_APEX with grant option
+/
+
+grant delete on PEV_T_NOTE_REMIDER_LOG_API to CEOS_INTRADM_APEX with grant option
+/
+
+--%carp-end
+
+
+create or replace synonym PEV_T_NOTE_REMIDER_LOG for CEOS_INTRADM.PEV_T_NOTE_REMIDER_LOG_API

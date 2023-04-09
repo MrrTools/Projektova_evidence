@@ -1,0 +1,33 @@
+--%carp-begin
+create or replace force view PEV_T_LOV_PEOPLE_POSITION_API as
+select "ID", "NAME", "IS_DELETED", "CREATED_DATE", "CREATED_BY", "UPDATED_DATE", "UPDATED_BY"
+ from PEV_T_LOV_PEOPLE_POSITION
+/
+show errors
+
+
+COMMENT ON TABLE PEV_T_LOV_PEOPLE_POSITION_API IS 'Ciselnik pracovnich zarazeni internich osob'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.ID IS 'PK - ID Identifikátor'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.NAME IS 'Název vlastníka'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.IS_DELETED IS 'Příznak smazání záznamu (1 - smazán)'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.CREATED_DATE IS 'datum vytvoření'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.CREATED_BY IS 'Uživatel, který vytvoril záznam.'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.UPDATED_DATE IS 'datum ulozeni'
+/
+
+COMMENT ON COLUMN PEV_T_LOV_PEOPLE_POSITION_API.UPDATED_BY IS 'Uživatel, který uložil záznam.'
+/
+
+--%carp-end
